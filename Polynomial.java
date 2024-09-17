@@ -1,59 +1,62 @@
 public class Polynomial{
 	
-	double[] poly;
+	private double[] poly;
 	
-	public zero_poly() {
-		poly = [0]; 
+	public Polynomial() {
+		poly = new double[]{0}; 
 	}
 	
-	public create_poly(double[] coeff){
-		poly = [coeff.length()]
-		for(int i = 0; i < coeff.length(); i ++) {
-			poly[i] = coeff[i]; 
-		}
+	public Polynomial(double[] coeff){
+		this.poly = coeff.clone();
 	}
 	
-	static double[] add(Polynomial poly1) {
-		double[] arr = poly1.poly; 
-		
-		if(arr.length() > poly.length()){
-			for(int i = 0; i < poly.length(); i ++) {
-				
-				arr[i] = arr[i] + poly[i]; 
-			}
-			
-			return arr; 
-			
-		}
-		else {
-			for(int i = 0; i < arr.length(); i ++) {
-				
-				poly[i] = arr[i] + poly[i]; 
-			}
-			
-			return poly;
-		}
+	public Polynomial add(Polynomial poly1) {
+		int maxLength = Math.max(this.poly.length, poly1.poly.length);
+        double[] result = new double[maxLength];
+
+        // Add corresponding coefficients from both polynomials
+        for (int i = 0; i < maxLength; i++) {
+            double firstCoeff;
+            double secondCoeff;
+            if(i < this.poly.length) {
+            	firstCoeff  = poly[i]; 
+            }
+            else {
+            	firstCoeff = 0; 
+            }
+            if (i < poly1.poly.length) {
+            	secondCoeff = poly1.poly[i];
+            }
+            else {
+            	secondCoeff = 0;
+            }
+            result[i] = firstCoeff + secondCoeff;
+        }
+
+        return new Polynomial(result);
 	}
 	
-	static double evaluate(double x) {
+	public double evaluate(double x) {
 		double sum = 0; 
 		
-		for(int i = 0; i < poly.length(), i ++){
-			sum  = sum + poly[i]*(x**i); 
+		for(int i = 0; i < poly.length; i ++){
+			sum  = sum + poly[i]*Math.pow(x, i); 
 		}
 		
 		return sum; 
 	}
 	
-	static boolean hasRoot(double x) {
+	public boolean hasRoot(double x) {
 		
-		value = evaluate(x); 
+		double value = evaluate(x); 
 		
 		if(value == 0) {
 			return true ; 
 		}
 		return false; 
 	}
+	
+	
 	
 	
 }
