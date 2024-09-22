@@ -7,10 +7,10 @@ public class Polynomial{
 	}
 	
 	public Polynomial(double[] coeff){
-		poly = new double[coeff.length];
-        for (int i = 0; i < coeff.length; i++) {
-            poly[i] = coeff[i];
-        }
+		poly = new double[coeff.length]; 
+		for(int i = 0; i < coeff.length; i ++){
+			poly[i] = coeff[i]; 
+		}
 	}
 	
 	public Polynomial add(Polynomial poly1) {
