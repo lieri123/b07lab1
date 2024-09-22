@@ -7,14 +7,16 @@ public class Polynomial{
 	}
 	
 	public Polynomial(double[] coeff){
-		this.poly = coeff.clone();
+		poly = new double[coeff.length];
+        for (int i = 0; i < coeff.length; i++) {
+            poly[i] = coeff[i];
+        }
 	}
 	
 	public Polynomial add(Polynomial poly1) {
 		int maxLength = Math.max(this.poly.length, poly1.poly.length);
         double[] result = new double[maxLength];
 
-        // Add corresponding coefficients from both polynomials
         for (int i = 0; i < maxLength; i++) {
             double firstCoeff;
             double secondCoeff;
